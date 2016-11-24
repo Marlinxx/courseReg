@@ -1,0 +1,77 @@
+
+<h1>Add Student Details<h1>
+	<div><form name='addStudentForm' ng-submit='addStudMeth(studentTemp,addStudentForm)' novalidate>
+	<table>
+		<th></th>
+		<tr>
+			<td>Student Name</td>
+			<td><input type='text' name='StudentName' ng-model='studentTemp.Name' required></td>
+				<td><span ng-show='addStudentForm.StudentName.$dirty && addStudentForm.StudentName.$error.required'>   
+						 Enter Name*
+					</span></td>
+		</tr>
+		<tr>
+			<td>Phone</td>
+			<td><input type='text' name='PhoneNum' ng-model='studentTemp.PhoneNum' ng-minlength='10' ng-maxlength='10' required></td>
+			<td><span ng-show='addStudentForm.PhoneNum.$dirty && addStudentForm.PhoneNum.$error.required'>   
+						 Enter Phone number*
+					</span>
+		</tr>
+		<tr>
+			<td>Email</td>
+			<td><input type='email' name='Email' ng-model='studentTemp.email' required></td>
+			<td><span ng-show='addStudentForm.Email.$dirty && addStudentForm.Email.$error.required'>   
+						 Enter Email-Id*
+					</span></td>
+		</tr>
+		<tr>
+			<td>Course</td>
+			<td>
+            <select ng-options="course.Name for course in CourseArray" ng-model="studentTemp.courseDet" ng-change='getFee(studentTemp)' required></select>	
+
+            <br></td>
+			<td><span ng-show='addStudentForm.CourseDet.$dirty && addStudentForm.CourseDet.$error.required'>   
+						 Select course 
+					</span></td>
+		</tr>
+		<tr>	
+			<td>Fees </td>
+			<td> <label id='courseFee'>Nil</label></td>
+		</tr>
+		<tr>
+		<td>Fee Payment</td>
+			<td>Paid in Installment?<input type="checkbox" ng-model="studentTemp.payF" ng-true-value="1" ng-false-value="0">
+				</td>
+		</tr>
+		<tr ng-show=studentTemp.payF>
+			<td>No of Installments</td>
+			<td><input type='number' name='NoOfIns' ng-model='studentTemp.remIns' min=1 max={{FeeIns}}></td>
+		<tr>
+		
+	</table>
+
+	<input type='submit' value='Submit' ng-disabled="addStudentForm.$invalid" >
+
+</form></div>
+
+ <table width='1000px' left = '100px' top = '50px'  id='table1' frame='box' >
+	<tr>
+		<th>Name</th>
+		<th>Phone</th>
+		<th>Email</th>
+		<th>Course</th>
+		<th>Doj</th>
+		<th>Rem.Ins.</th>
+		<th>Rem.Fee </th>
+	</tr>
+	<tr ng-repeat='student in studentArray' align='center'>
+		<td>{{student.Name}}</td>
+		<td>{{student.PhoneNum}}</td>
+		<td>{{student.email}}</td>
+		<td>{{student.courseDet.Name}}</td>
+		<td>{{student.doj | date:'yyyy-MM-dd'}}</td>
+		<td>{{student.remIns}}</td>
+		<td>{{student.remFee}}</td>
+	</tr>
+</table></div>
+

@@ -1,0 +1,72 @@
+	<h1> Course Details </h1>
+<table width='1000px' left = '100px' top = '50px'  id='table1' frame='box' >	<tr>
+		<th>Course Id</th>
+		<th>Course Name</th>
+		<th>Course Duration(m)</th>
+		<th>Course Fees</th>
+		<th>Installments</th>
+		<th>Batch Size</th>
+	</tr>
+	<tr ng-repeat='course in CourseArray' align='center'>
+		<td>{{course.Id}}</td>
+		<td>{{course.Name}}</td>
+		<td>{{course.Durat}}</td>
+		<td>{{course.fees}}</td>
+		<td>{{course.InsNo}}</td>
+		<td>{{course.BatSiz}}</td>
+	</tr>
+</table></div>
+
+	<div><input type='submit' ng-click='setShow()' value='Add Course' ng-hide='showadd'></div>
+
+	<div><form name='addCourseForm' ng-submit='addCourseMeth(courseTemp,addcourseForm)' ng-show='showadd' novalidate>
+	<table>
+		<th><h1>Add Course Details<h1></th>
+		<tr>
+			<td>Course Id</td>
+			<td><input type='text' name='CourseId' ng-model='courseTemp.Id' required></td>
+				<td><span ng-show='addCourseForm.CourseId.$dirty && addCourseForm.CourseId.$error.required'>   
+						 Enter course Id*
+					</span></td>
+		</tr>
+		<tr>
+			<td>Course Name</td>
+			<td><input type='text' name='CourseName' ng-model='courseTemp.Name' required></td>
+			<td><span ng-show='addCourseForm.CourseName.$dirty && addCourseForm.CourseName.$error.required'>   
+						 Enter course Name*
+					</span><td>
+		</tr>
+		<tr>
+			<td>Duration(in months)</td>
+			<td><input type='number' name='Durat' ng-model='courseTemp.Durat' required></td>
+			<td><span ng-show='addCourseForm.Durat.$dirty && addCourseForm.Durat.$error.required'>   
+						 Enter course Duration
+					</span></td>
+		</tr>
+		<tr>
+			<td>No of Installments allowed</td>
+			<td><input type='number' name='insNo' ng-model='courseTemp.InsNo' required></td>
+			<td><span ng-show='addCourseForm.insNo.$dirty && addCourseForm.insNo.$error.required'>   
+						 Enter Number of installments allowed
+					</span></td>
+		</tr>
+		<tr>
+			<td>Batch Size</td>
+			<td><input type='number' name='batSiz' ng-model='courseTemp.BatSiz' required></td>
+			<td><span ng-show='addCourseForm.batSiz.$dirty && addCourseForm.batSiz.$error.required'>   
+						 Enter Number of students allowed
+					</span></td>
+		</tr>
+		<tr>
+			<td>Fees</td>
+			<td><input type='number' name='fee' ng-model='courseTemp.fees' required></td>
+			<td><span ng-show='addCourseForm.fee.$dirty && addCourseForm.fee.$error.required'>   
+						 Enter course Fee
+					</span></td>
+		</tr>
+	</table>
+	<input type='submit' value='Submit' ng-disabled="addCourseForm.$invalid" ng-click='setShow()' >
+	<input type='button' value='Cancel' ng-click='setShow()'>
+</form></div>
+<div>
+
