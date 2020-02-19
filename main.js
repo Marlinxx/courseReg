@@ -84,12 +84,12 @@ app.controller('courseController',function($scope){
 app.config(function($routeProvider) {
     $routeProvider
     .when("/courses", {
-        templateUrl : "views/my-course.html"
+        templateUrl : "my-course.html"
     })
     .when("/students", {
-        templateUrl : "views/my-student.html"
+        templateUrl : "my-student.html"
 	})   
     .when("/search", {
-        templateUrl : "views/my-search.html"
+        templateUrl : "my-search.html"
      });
 });
